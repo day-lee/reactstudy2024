@@ -1,22 +1,60 @@
 import logo from "./pedro.png";
 import "./App.css";
+import Board from "./Tictactoe";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Let's Learn React with Pedro the Raccoon! 🦝</p>
-        <a
-          className="App-link"
-          href="https://www.youtube.com/watch?v=CN0aLonHiIc"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Click here for Pedro's one hour loop
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <p>Let's Learn React with Pedro the Raccoon! 🦝</p>
+          <a
+            className="App-link"
+            href="https://www.youtube.com/watch?v=CN0aLonHiIc"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Click here for Pedro's one hour loop 🎵
+          </a>
+          <p>
+            <Link to="/tictactoe">Click here for Tic-tac-toe Game 🕹️</Link>
+          </p>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br /> <br />
+          <br />
+          <br />
+          <Routes>
+            <Route path="/tictactoe" element={<Board />} />
+          </Routes>
+        </header>
+      </div>
+    </Router>
   );
 }
 
