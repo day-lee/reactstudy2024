@@ -8,7 +8,7 @@ function Square({ value, onSquareClick }) {
   );
 }
 
-function Board({ xIsNext, squares, onPlay }) {
+function Board({ xIsNext, squares, currentMove, onPlay }) {
   function handleClick(i) {
     // check if square already got a value, then return to quit the function
     if (squares[i] || calculateWinner(squares)) {
@@ -28,7 +28,7 @@ function Board({ xIsNext, squares, onPlay }) {
   if (winner) {
     status = "Winner: " + winner;
   } else {
-    status = "Next Plyaer: " + (xIsNext ? "X" : "O");
+    status = "Next Player: " + (xIsNext ? "X" : "O");
   }
 
   const rows = [
@@ -48,14 +48,17 @@ function Board({ xIsNext, squares, onPlay }) {
   return (
     <>
       <div className="status">{status}</div>
+      <h4>You are at move #{currentMove}</h4>
       {boardRows}
     </>
   );
 }
 
+const INITIAL_VALUE = [Array(9).fill(null)];
+
 export default function Game() {
   // shared state : to collect the data from multiple children
-  const [history, setHistory] = useState([Array(9).fill(null)]);
+  const [history, setHistory] = useState(INITIAL_VALUE);
   const [currentMove, setCurrentMove] = useState(0);
   const xIsNext = currentMove % 2 === 0;
   const currentSquares = history[currentMove];
@@ -70,7 +73,7 @@ export default function Game() {
     setCurrentMove(nextMove);
   }
 
-  const moves = history.map((squares, move) => {
+  let moves = history.map((squares, move) => {
     let description;
     if (move > 0) {
       description = "Go to move #" + move;
@@ -84,12 +87,24 @@ export default function Game() {
     );
   });
 
+  const handleReset = () => {
+    setHistory(INITIAL_VALUE);
+    setCurrentMove(0);
+  };
+
   return (
     <div className="game">
       <div className="game-board">
-        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
+        <Board
+          xIsNext={xIsNext}
+          squares={currentSquares}
+          currentMove={currentMove}
+          onPlay={handlePlay}
+        />
       </div>
       <div className="game-info">
+        {/* <button onClick={handleSort}>Sorting</button> */}
+        <button onClick={handleReset}>Reset</button>
         <ol>{moves}</ol>
       </div>
     </div>

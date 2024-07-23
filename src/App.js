@@ -21,34 +21,6 @@ function App() {
           <p>
             <Link to="/tictactoe">Click here for Tic-tac-toe Game 🕹️</Link>
           </p>
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br /> <br />
-          <br />
-          <br />
           <Routes>
             <Route path="/tictactoe" element={<Game />} />
           </Routes>
