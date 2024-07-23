@@ -4,6 +4,7 @@
 
 .App-logo {
   height: 30vmin;
+  margin-bottom: 10px;
   pointer-events: none;
 }
 
@@ -11,6 +12,10 @@
   .App-logo {
     animation: App-logo-spin infinite 3s linear;
   }
+}
+
+.paused {
+  animation-play-state: paused;
 }
 
 .App-header {

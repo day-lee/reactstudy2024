@@ -1,14 +1,27 @@
 import logo from "./pedro.png";
 import "./App.css";
 import Game from "./Tictactoe";
+import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 function App() {
+  const [isPaused, setIsPaused] = useState(false);
+  const pauseHandle = () => {
+    setIsPaused(!isPaused);
+  };
+
   return (
     <Router>
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          <img
+            src={logo}
+            className={`App-logo ${isPaused ? `paused` : " "}`}
+            alt="logo"
+          />
+          <button onClick={pauseHandle}>
+            Click here to start/pause his spin
+          </button>
           <p>Let's Learn React with Pedro the Raccoon! 🦝</p>
           <a
             className="App-link"
