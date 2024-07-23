@@ -1,6 +1,6 @@
 import logo from "./pedro.png";
 import "./App.css";
-import Board from "./Tictactoe";
+import Game from "./Tictactoe";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 function App() {
@@ -50,7 +50,7 @@ function App() {
           <br />
           <br />
           <Routes>
-            <Route path="/tictactoe" element={<Board />} />
+            <Route path="/tictactoe" element={<Game />} />
           </Routes>
         </header>
       </div>
