@@ -55,18 +55,19 @@ function Board({ xIsNext, squares, currentMove, onPlay }) {
 }
 
 const INITIAL_VALUE = [Array(9).fill(null)];
-
 export default function Game() {
   // shared state : to collect the data from multiple children
   const [history, setHistory] = useState(INITIAL_VALUE);
   const [currentMove, setCurrentMove] = useState(0);
+  const [isDescending, setisDescending] = useState(true);
   const xIsNext = currentMove % 2 === 0;
   const currentSquares = history[currentMove];
 
+  // nextSquares is an array
   function handlePlay(nextSquares) {
     const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
-    setHistory(nextHistory);
     setCurrentMove(nextHistory.length - 1);
+    setHistory(nextHistory);
   }
 
   function jumpTo(nextMove) {
@@ -75,10 +76,10 @@ export default function Game() {
 
   let moves = history.map((squares, move) => {
     let description;
-    if (move > 0) {
+    if (move === 0) {
+      description = "Go to game start ";
+    } else if (move > 0) {
       description = "Go to move #" + move;
-    } else {
-      description = "Go to game start";
     }
     return (
       <li key={move}>
@@ -86,6 +87,10 @@ export default function Game() {
       </li>
     );
   });
+
+  const handleSort = () => {
+    setisDescending(!isDescending);
+  };
 
   const handleReset = () => {
     setHistory(INITIAL_VALUE);
@@ -103,9 +108,9 @@ export default function Game() {
         />
       </div>
       <div className="game-info">
-        {/* <button onClick={handleSort}>Sorting</button> */}
+        <button onClick={handleSort}>Sort</button>
         <button onClick={handleReset}>Reset</button>
-        <ol>{moves}</ol>
+        <ol>{isDescending ? moves : moves.reverse()}</ol>
       </div>
     </div>
   );
@@ -125,6 +130,7 @@ function calculateWinner(squares) {
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      console.log(lines[i]);
       return squares[a];
     }
   }
