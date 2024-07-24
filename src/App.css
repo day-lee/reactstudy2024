@@ -19,7 +19,7 @@
 }
 
 .App-header {
-  background-color: #7a42f4;
+  background: linear-gradient(lightCyan, skyBlue);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -40,4 +40,9 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+a {
+  color: #696969;
+  text-decoration: none;
 }

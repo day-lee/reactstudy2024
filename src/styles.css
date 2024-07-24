@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  color: grey;
 }
 
 body {
@@ -46,6 +47,10 @@ ul {
   padding-inline-start: 20px;
 }
 
+li {
+  list-style-type: none;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -59,6 +64,7 @@ body {
 .square {
   background: #fff;
   border: 1px solid #999;
+  color: grey;
   float: left;
   font-size: 24px;
   font-weight: bold;
@@ -87,10 +93,18 @@ body {
   margin-bottom: 40px;
 }
 
-.game-info {
-  margin-left: 20px;
+.game-btn {
+  margin-left: 60px;
+  margin-right: 10px;
+}
+
+.game-btn button {
+  margin-left: 10px;
+  margin-right: 20px;
 }
 
 .win {
-  background: blue;
+  /* background: linear-gradient(45deg, Grey, White); */
+  /* color: #ff8c00; */
+  color: #ff69b4;
 }

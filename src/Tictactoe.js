@@ -1,27 +1,18 @@
 import { useState } from "react";
 
-function Square({ value, onSquareClick }) {
-  // when value got a flag, add css
-  // const [isPaused, setIsPaused] = useState(false);
-  // className={`App-logo ${isPaused ? `paused` : " "}`}
-  //   const [isWon, setIsWon] = useState(false);
-  //   console.log(win);
-  //   if (win !== null && win.includes(value)) {
-  //     setIsWon(true);
-  //   } else {
-  //     setIsWon(false);
-  //   }
+function Square({ index, value, onSquareClick, win }) {
+  let isWon = false;
+  if (win !== null && win.includes(index)) {
+    console.log("win?");
+    isWon = true;
+  }
+  console.log("win: " + value + " " + win + " " + index);
+
   return (
-    <button className="square" onClick={onSquareClick}>
+    <button className={`square ${isWon ? `win` : " "}`} onClick={onSquareClick}>
       {value}
     </button>
   );
-
-  //   return (
-  //     <button className={`square ${isWon ? `win` : " "}`} onClick={onSquareClick}>
-  //       {value}
-  //     </button>
-  //   );
 }
 
 function Board({ xIsNext, squares, currentMove, onPlay }) {
@@ -47,15 +38,19 @@ function Board({ xIsNext, squares, currentMove, onPlay }) {
 
   //const winner = calculateWinner(squares);
   const [winningLines, winner] = calculateWinner(squares);
-  console.log(winningLines, winner); // [0, 3, 6]
+  //console.log(winningLines, winner); // [0, 3, 6]
   //squares array has no null and winner false means draw
   let status;
+  let isWon;
   if (winner) {
     status = "Winner: " + winner;
+    isWon = true;
   } else if (!winner && !squares.includes(null)) {
     status = "Result: Draw";
+    isWon = false;
   } else {
     status = "Next Player: " + (xIsNext ? "X" : "O");
+    isWon = false;
   }
   // draw case
   //  oxo
@@ -72,6 +67,7 @@ function Board({ xIsNext, squares, currentMove, onPlay }) {
     <div className="board-row">
       {row.map((item) => (
         <Square
+          index={item}
           value={squares[item]}
           onSquareClick={() => handleClick(item)}
           win={winningLines}
@@ -82,7 +78,7 @@ function Board({ xIsNext, squares, currentMove, onPlay }) {
 
   return (
     <>
-      <div className="status">{status}</div>
+      <div className={`"status" + ${isWon ? "win" : " "}`}>{status}</div>
       <h4>You are at move #{currentMove}</h4>
       {boardRows}
     </>
@@ -143,8 +139,10 @@ export default function Game() {
         />
       </div>
       <div className="game-info">
-        <button onClick={handleSort}>Sort</button>
-        <button onClick={handleReset}>Reset</button>
+        <div className="game-btn">
+          <button onClick={handleSort}>&nbsp;Sort&nbsp;</button>
+          <button onClick={handleReset}>Reset</button>
+        </div>
         <ol>{isDescending ? moves : moves.reverse()}</ol>
       </div>
     </div>

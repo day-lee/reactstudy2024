@@ -6,15 +6,33 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 function App() {
   const [isPaused, setIsPaused] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
+
   const pauseHandle = () => {
     setIsPaused(!isPaused);
+  };
+
+  const hideHandle = () => {
+    setIsClicked(true);
   };
 
   return (
     <Router>
       <div className="App">
+        <p>
+          {" "}
+          <button className="hidden" onClick={hideHandle}>
+            {!isClicked ? (
+              <Link to="/tictactoe">
+                Click here for Tic-tac-toe Game ✖️✖️✖️{" "}
+              </Link>
+            ) : (
+              <Link to="/tictactoe"> Enjoy the Tic-tac-toe Game ✖️✖️✖️ </Link>
+            )}
+          </button>
+        </p>
         <header className="App-header">
-          <img
+          {/* <img
             src={logo}
             className={`App-logo ${isPaused ? `paused` : " "}`}
             alt="logo"
@@ -30,10 +48,8 @@ function App() {
             rel="noopener noreferrer"
           >
             Click here for Pedro's one hour loop 🎵
-          </a>
-          <p>
-            <Link to="/tictactoe">Click here for Tic-tac-toe Game 🕹️</Link>
-          </p>
+          </a> */}
+
           <Routes>
             <Route path="/tictactoe" element={<Game />} />
           </Routes>
