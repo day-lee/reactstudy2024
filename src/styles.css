@@ -92,6 +92,9 @@ body {
   flex-direction: row;
   margin-bottom: 40px;
 }
+.game-board {
+  text-align: center;
+}
 
 .game-btn {
   margin-left: 60px;
@@ -106,5 +109,31 @@ body {
 .win {
   /* background: linear-gradient(45deg, Grey, White); */
   /* color: #ff8c00; */
+  font-weight: bold;
   color: #ff69b4;
+}
+
+@media (max-width: 768px) {
+  .board-row {
+    clear: both;
+    content: "";
+    display: flex;
+    justify-content: center;
+  }
+  .game {
+    margin-left: 20px;
+  }
+  .game-btn {
+    margin-left: 10px;
+  }
+
+  li {
+    list-style-type: none;
+    margin-right: 45px;
+  }
+
+  .square {
+    height: 40px;
+    width: 40px;
+  }
 }

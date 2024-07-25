@@ -19,19 +19,19 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <p>
-          {" "}
-          <button className="hidden" onClick={hideHandle}>
-            {!isClicked ? (
-              <Link to="/tictactoe">
-                Click here for Tic-tac-toe Game ✖️✖️✖️{" "}
-              </Link>
-            ) : (
-              <Link to="/tictactoe"> Enjoy the Tic-tac-toe Game ✖️✖️✖️ </Link>
-            )}
-          </button>
-        </p>
         <header className="App-header">
+          <p>
+            {" "}
+            <button className="hidden" onClick={hideHandle}>
+              {!isClicked ? (
+                <Link to="/tictactoe">
+                  Click here for Tic-tac-toe Game ✖️✖️✖️{" "}
+                </Link>
+              ) : (
+                <Link to="/tictactoe"> Enjoy the Tic-tac-toe Game ✖️✖️✖️ </Link>
+              )}
+            </button>
+          </p>
           {/* <img
             src={logo}
             className={`App-logo ${isPaused ? `paused` : " "}`}
@@ -55,6 +55,11 @@ function App() {
           </Routes>
         </header>
       </div>
+      <footer className="footer">
+        <p>
+          <span> © Daylee 2024</span>
+        </p>
+      </footer>
     </Router>
   );
 }

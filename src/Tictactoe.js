@@ -47,7 +47,7 @@ function Board({ xIsNext, squares, currentMove, onPlay }) {
     isWon = true;
   } else if (!winner && !squares.includes(null)) {
     status = "Result: Draw";
-    isWon = false;
+    isWon = true;
   } else {
     status = "Next Player: " + (xIsNext ? "X" : "O");
     isWon = false;
