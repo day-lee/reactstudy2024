@@ -25,10 +25,10 @@ function App() {
             <button className="hidden" onClick={hideHandle}>
               {!isClicked ? (
                 <Link to="/tictactoe">
-                  Click here for Tic-tac-toe Game ✖️✖️✖️{" "}
+                  Click here for Tic-Tac-Toe Game ✖️✖️✖️{" "}
                 </Link>
               ) : (
-                <Link to="/tictactoe"> Enjoy the Tic-tac-toe Game ✖️✖️✖️ </Link>
+                <Link to="/tictactoe"> Enjoy the Tic-Tac-Toe Game ✖️✖️✖️ </Link>
               )}
             </button>
           </p>
