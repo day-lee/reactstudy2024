@@ -1,8 +1,9 @@
 # [Tic-Tac-Toe Game ✖️✖️✖️](https://day-lee.github.io/tic-tac-toe/)
-https://day-lee.github.io/tic-tac-toe/  
+
 Written based on the [React Tutorial](https://react.dev/learn/tutorial-tic-tac-toe)
 
-![image](https://github.com/user-attachments/assets/dfa148e8-281d-4a4e-a065-e591d62763da)
+![image](https://github.com/user-attachments/assets/dfa148e8-281d-4a4e-a065-e591d62763da)  
+  [Click here to play the game](https://day-lee.github.io/tic-tac-toe/)  
 
 ## 🗝️ Key Features 
 - Indicate the result: winner or draw 
